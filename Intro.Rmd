@@ -11,9 +11,9 @@ load("data/lq.Rdata")
 
 ```
 
-## Task 1 - Scraping La Quinta
+## Scraping La Quinta
 
-## *write_up*
+## *Detail*
 1. get_lq: We created a directory `lq`, and used the absolute address to download each La Quinta hotel’s HTML file. 
 
 2. parse_lq: First, we retrieve all the paths of from `lq` folder and save them to `files`, then create an empty list `res`.
@@ -23,8 +23,8 @@ load("data/lq.Rdata")
 4. After the loop, we use `bind_rows` to combine `res` into a data frame. We then start the tidying part. We start from spliting address into street address, state code, and zip code by using `str_split`. Then we filter out the data that is not in US. First, we get rid of the data that the phone number in which is not start with 1 (Telephone country code for US & Canada). Fruther, we try to filter out the data in Canada. We foung that the zip code for Canada has capital letters in it so we use this clue to remove lq in Canada. After all, rename the feature and get rid of the unnecessary variables, we get the final dataframe. 
 
 
-## Task 2 - Scraping Denny’s
-## *write_up*
+## Scraping Denny’s
+## *Detail*
 1. get_dennys: Scraping the Denny’s site relies on a 3rd party service to display its locations.Thus, we first create a function `get_url` that we can careate the html path for seaching all the restaruant by specific limit, zip_code and radius.
 
 2. We start from the Salt Lake City in Utah, which locates in the middle west of United States. We parse dennys that are located in the 5000 miles circle around the city. 
@@ -37,12 +37,13 @@ These 4 xml files give us dennys in DC and 50 states of United States, but we ac
 
 ## Task 3 - Distance Analysis
 
-## *write_up*
+## *Detail*
 1. Calculating distance: 
     + We want to know how far away is each denny's to each La Quinta. So we use 2 for-loop to go through every denny's for each La Quinta. Then we use a package called `geosphere` to calculate the distance between them. The strategy we used here is to find out the nearest denny's for each La Quinta, so we calculate the minimum value of all the distances of every denny's to that one particular La Quinta in the inner for-loop. And the outer loop garuantee us a list of those minimum values, which represents distances from La Quinta to its nearest Denny's.
 
 2. Analysis/Results: 
     + We decided to draw a histogram to show the results, and we found out that it's a left skewness shape, which means most La Quinta do have a relatively close Denny's. But when we narrow down the value that represents "next to" to 5 miles, there're 60% of La Quinta satisfy this condtion and when we narrow down it further to a quarter mile, the percentage is quite low. Thus we have a conclusion here that the claim might not be true. 
+    
 ``` {r}
 install.packages("geosphere", repos = "https://cran.r-project.org/")
 library(geosphere)
