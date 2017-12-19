@@ -1,9 +1,4 @@
----
-title: "Dennys_LQ"
-author: "Colin Rundel"
-date: "10/12/2016"
-output: html_document
----
+
 
 ```{r}
 load("data/dennys.Rdata")
