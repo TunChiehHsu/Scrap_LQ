@@ -8,7 +8,7 @@ load("data/lq.Rdata")
 
 ## Scraping La Quinta
 
-## *Detail*
+### *Detail*
 1. get_lq: We created a directory `lq`, and used the absolute address to download each La Quinta hotel’s HTML file. 
 
 2. parse_lq: First, we retrieve all the paths of from `lq` folder and save them to `files`, then create an empty list `res`.
@@ -32,7 +32,7 @@ These 4 xml files give us dennys in DC and 50 states of United States, but we ac
 
 ## Task 3 - Distance Analysis
 
-## *Detail*
+### *Detail*
 1. Calculating distance: 
     + We want to know how far away is each denny's to each La Quinta. So we use 2 for-loop to go through every denny's for each La Quinta. Then we use a package called `geosphere` to calculate the distance between them. The strategy we used here is to find out the nearest denny's for each La Quinta, so we calculate the minimum value of all the distances of every denny's to that one particular La Quinta in the inner for-loop. And the outer loop garuantee us a list of those minimum values, which represents distances from La Quinta to its nearest Denny's.
 
